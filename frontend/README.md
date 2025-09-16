@@ -1,82 +1,58 @@
-# demo-forum-frontend
+Here’s the quickest end‑to‑end on Windows PowerShell.
 
-This demo is supposed to give you a quick overview in the way modern frontend development can be done. This example is bit simplified and does not use some more advanced concepts with React such as Redux/Flow -patterns. We will not be bundling the frontend with the backend either.
+1) Build and run the backend
+- From backend folder:
+```powershell
+cd E:\Projects\DiscussionForumMain\backend
+.\gradlew.bat clean bootJar --no-daemon
+java -jar .\build\libs\backend.jar
+```
+- Wait until you see “Tomcat started on port 8080”.
 
-There are different branches for each step.
+2) Verify API
+- New PowerShell window:
+```powershell
+Invoke-RestMethod http://localhost:8080/topic | ConvertTo-Json -Depth 5
+```
+- Create a topic:
+```powershell
+Invoke-RestMethod http://localhost:8080/topic -Method Post -ContentType "application/json" -Body '{"title":"Demo Topic"}'
+```
+- List messages for topic 1:
+```powershell
+Invoke-RestMethod http://localhost:8080/topic/1/message | ConvertTo-Json -Depth 5
+```
+- Add a message to topic 1:
+```powershell
+Invoke-RestMethod http://localhost:8080/topic/1/message -Method Post -ContentType "application/json" -Body '{"content":"Hello from API"}'
+```
 
-Frontend code for this lab is written in EcmaScript 2015 (JavaScript ES6) and it uses webpack to bundle things.
+3) Open the frontend
+- In the same window:
+```powershell
+Start-Process "http://localhost:8080/webjars/forum/index.html"
+```
 
-# Prerequisites
+4) Sanity checks in UI
+- Load the page, confirm topics are listed.
+- Create a topic and a message from the UI; refresh the list to see updates.
 
-1. Install Chrome or Firefox
-2. Install [React Developer Tools](https://github.com/facebook/react-devtools)
+5) If something doesn’t load
+- Confirm the frontend jar is on the classpath:
+```powershell
+jar tf .\build\libs\backend.jar | Select-String "webjars/forum"
+```
+- If missing: make sure `backend/libs/forum-frontend.jar` exists and `build.gradle` includes:
+  - implementation files('libs/forum-frontend.jar')
+- Rebuild and rerun:
+```powershell
+.\gradlew.bat clean bootJar --no-daemon
+java -jar .\build\libs\backend.jar
+```
 
-Things will be demoed on Google Chrome, but Mozilla Firefox or Microsoft Edge should be fine too. Edge does not yet have the [React Developer Tools](https://github.com/facebook/react-devtools).
+6) Optional: run via Gradle (instead of java -jar)
+```powershell
+.\gradlew.bat bootRun --no-daemon
+```
 
-1. Install lightweight texteditor, such as [Atom](https://atom.io/)
-2. Install React (.jsx) support for Atom [https://atom.io/packages/react](https://atom.io/packages/react)
-
-# Setup
-
-Important things first, to get things running you will have to have [node](https://nodejs.org/en/) installed, preferrably version 6 (current version, not LTS).
-
-1. Verify that was installed by running the following command `node --version` returns the node version number `v6.2.0`.
-
-2. After node has been installed, we have to install our dependencies with `npm`, node package manager, with the command `npm install`.
-
-3. Lastly we run the actual application with the command `npm start` which starts local node server that hosts our frontend application.
-
-# Testing
-
-For component testing we are using AVA test runn  er in conjuction with [Enzyme](http://airbnb.io/enzyme/) to test React components.
-
-Tests can be run with `npm run test`, tests can be found under the `./test/` -folder. AVA searches this folder automatically.
-
-# Additional resources
-[http://jeffcarp.github.io/frontend-hyperpolyglot/](http://jeffcarp.github.io/frontend-hyperpolyglot/)
-
-# Where to continue from here?
-- Elm
-- React + Redux (time-travel)
-- [React Native](https://facebook.github.io/react-native/)
-- Cycle.js
-
-Good resources to continue learning about React and frontend development in general:
-[https://reactforbeginners.com/](https://reactforbeginners.com/) (beginner friendly)
-[https://learnredux.com/](https://learnredux.com/) (advanced)
-[https://www.codeschool.com/learn](https://www.codeschool.com/learn)
-[https://github.com/getify/You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
-[https://frontendmasters.com/](https://frontendmasters.com/)
-# Steps
-
-High level overview what each step contains
-
-## stage-0
-  ForumContainer component
-  main, boostrapping application to dom
-
-## stage-1
-  SingleTopic component
-  ForumContainer, mapping items to components
-
-## stage-2
-  moment.js timehandling library
-  Message component
-  SingleTopic, map messages to Message component
-
-## stage-3
-  axios http-promise library, communication with backend using GET
-    ForumContainer
-    SingleTopic
-
-## stage-4
-  SendText re-usable component
-
-## stage-5
-  Communication with backend using axios by using POST
-    ForumContainer
-    SingleTopic
-
-## Final
-
-Same as master
+That’s it. Follow the order exactly and you’ll have API + UI working at http://localhost:8080.
