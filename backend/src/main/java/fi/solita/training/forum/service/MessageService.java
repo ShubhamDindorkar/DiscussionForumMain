@@ -30,7 +30,7 @@ public class MessageService {
 
 	@Transactional
 	public MessageDto addMessagesForTopic(long topicId, MessageDto dto) {
-		Message message = new Message(dto.getContent(), topicDao.getOne(topicId));
+		Message message = new Message(dto.getContent(), topicDao.getReferenceById(topicId));
 		messageDao.save(message);
 		return toMessageDto(message);
 	}
