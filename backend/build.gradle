@@ -24,6 +24,10 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.14.0'
 }
 
+springBoot {
+    mainClass = 'fi.solita.training.forum.App'
+}
+
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
