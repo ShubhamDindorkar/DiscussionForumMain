@@ -8,12 +8,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Message {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    @SequenceGenerator(name="message_seq_gen", sequenceName="message_seq", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="message_seq_gen")
 	private long id;
 
 	@Column(nullable=false)
