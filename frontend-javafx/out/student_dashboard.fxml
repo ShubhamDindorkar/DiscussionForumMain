@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.forum.dashboard.StudentDashboardController"
+            stylesheets="@style.css">
+    
+    <!-- Top Navigation Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="student-navbar">
+            <padding>
+                <Insets top="16" right="24" bottom="16" left="24"/>
+            </padding>
+            
+            <Text text="Discussion Forum" styleClass="navbar-brand">
+                <font>
+                    <Font name="System Bold" size="22"/>
+                </font>
+            </Text>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <TextField fx:id="searchField" promptText="🔍 Search topics..." 
+                      styleClass="search-field" prefWidth="300"/>
+            
+            <Button fx:id="notificationBtn" text="🔔" styleClass="icon-button">
+                <tooltip>
+                    <Tooltip text="Notifications"/>
+                </tooltip>
+            </Button>
+            
+            <Button fx:id="profileBtn" text="👤" styleClass="profile-button">
+                <tooltip>
+                    <Tooltip text="Profile"/>
+                </tooltip>
+            </Button>
+        </HBox>
+    </top>
+    
+    <!-- Main Content -->
+    <center>
+        <StackPane>
+            <!-- Dashboard Home View -->
+            <VBox fx:id="dashboardPane" spacing="24" styleClass="student-content">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <!-- Welcome Section -->
+                <VBox spacing="8">
+                    <Text fx:id="welcomeText" text="Welcome back, Student!" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="32"/>
+                        </font>
+                    </Text>
+                    <Text text="What would you like to do today?" 
+                          style="-fx-fill: #718096; -fx-font-size: 16;"/>
+                </VBox>
+                
+                <!-- Quick Action Cards Grid -->
+                <GridPane hgap="24" vgap="24">
+                    <!-- Row 1 -->
+                    <VBox fx:id="topicsCard" styleClass="feature-card" spacing="16" 
+                          GridPane.rowIndex="0" GridPane.columnIndex="0" 
+                          onMouseClicked="#showTopics">
+                        <padding>
+                            <Insets top="32" right="32" bottom="32" left="32"/>
+                        </padding>
+                        <Text text="💬" style="-fx-font-size: 48;"/>
+                        <Text text="Browse Topics" styleClass="card-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Text>
+                        <Text text="Explore discussions and join conversations" 
+                              styleClass="card-description"/>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <Text text="→" style="-fx-fill: #667eea; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <VBox fx:id="myPostsCard" styleClass="feature-card" spacing="16"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1"
+                          onMouseClicked="#showMyPosts">
+                        <padding>
+                            <Insets top="32" right="32" bottom="32" left="32"/>
+                        </padding>
+                        <Text text="📝" style="-fx-font-size: 48;"/>
+                        <Text text="My Posts" styleClass="card-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Text>
+                        <Text text="View and manage your posts" 
+                              styleClass="card-description"/>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <Text text="→" style="-fx-fill: #667eea; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <VBox fx:id="createPostCard" styleClass="feature-card feature-card-highlight" spacing="16"
+                          GridPane.rowIndex="0" GridPane.columnIndex="2"
+                          onMouseClicked="#showCreatePost">
+                        <padding>
+                            <Insets top="32" right="32" bottom="32" left="32"/>
+                        </padding>
+                        <Text text="✍️" style="-fx-font-size: 48;"/>
+                        <Text text="Create Post" styleClass="card-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Text>
+                        <Text text="Start a new discussion topic" 
+                              styleClass="card-description"/>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <Text text="→" style="-fx-fill: white; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <!-- Row 2 -->
+                    <VBox fx:id="notificationsCard" styleClass="feature-card" spacing="16"
+                          GridPane.rowIndex="1" GridPane.columnIndex="0"
+                          onMouseClicked="#showNotifications">
+                        <padding>
+                            <Insets top="32" right="32" bottom="32" left="32"/>
+                        </padding>
+                        <Text text="🔔" style="-fx-font-size: 48;"/>
+                        <Text text="Notifications" styleClass="card-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Text>
+                        <Text text="Check your latest updates" 
+                              styleClass="card-description"/>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <HBox spacing="8" alignment="CENTER_LEFT">
+                            <Text text="3 new" styleClass="badge-notification"/>
+                            <Text text="→" style="-fx-fill: #667eea; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <VBox fx:id="profileCard" styleClass="feature-card" spacing="16"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1"
+                          onMouseClicked="#showProfile">
+                        <padding>
+                            <Insets top="32" right="32" bottom="32" left="32"/>
+                        </padding>
+                        <Text text="👤" style="-fx-font-size: 48;"/>
+                        <Text text="My Profile" styleClass="card-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Text>
+                        <Text text="Update your profile information" 
+                              styleClass="card-description"/>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <Text text="→" style="-fx-fill: #667eea; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                    </VBox>
+                    
+                    <VBox fx:id="settingsCard" styleClass="feature-card" spacing="16"
+                          GridPane.rowIndex="1" GridPane.columnIndex="2"
+                          onMouseClicked="#showSettings">
+                        <padding>
+                            <Insets top="32" right="32" bottom="32" left="32"/>
+                        </padding>
+                        <Text text="⚙️" style="-fx-font-size: 48;"/>
+                        <Text text="Settings" styleClass="card-title">
+                            <font>
+                                <Font name="System Bold" size="20"/>
+                            </font>
+                        </Text>
+                        <Text text="Manage your preferences" 
+                              styleClass="card-description"/>
+                        <Region VBox.vgrow="ALWAYS"/>
+                        <Text text="→" style="-fx-fill: #667eea; -fx-font-size: 24; -fx-font-weight: bold;"/>
+                    </VBox>
+                </GridPane>
+                
+                <!-- Recent Activity -->
+                <VBox spacing="16">
+                    <Text text="Recent Activity" styleClass="section-title">
+                        <font>
+                            <Font name="System Bold" size="20"/>
+                        </font>
+                    </Text>
+                    <VBox styleClass="activity-card" spacing="12">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <ListView fx:id="recentActivityList" styleClass="activity-list" prefHeight="200"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Topics View -->
+            <VBox fx:id="topicsPane" spacing="20" styleClass="student-content" visible="false">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Button text="← Back" styleClass="back-button" onAction="#showDashboard"/>
+                    <Text text="Discussion Topics" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Text>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+ New Topic" styleClass="primary-button" onAction="#showCreatePost"/>
+                </HBox>
+                
+                <TableView fx:id="topicsTable" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="topicTitleCol" text="Topic Title" prefWidth="300"/>
+                        <TableColumn fx:id="topicAuthorCol" text="Author" prefWidth="150"/>
+                        <TableColumn fx:id="topicRepliesCol" text="Replies" prefWidth="100"/>
+                        <TableColumn fx:id="topicDateCol" text="Last Activity" prefWidth="150"/>
+                        <TableColumn fx:id="topicActionsCol" text="Actions" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <!-- My Posts View -->
+            <VBox fx:id="myPostsPane" spacing="20" styleClass="student-content" visible="false">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Button text="← Back" styleClass="back-button" onAction="#showDashboard"/>
+                    <Text text="My Posts" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Text>
+                </HBox>
+                
+                <TableView fx:id="myPostsTable" styleClass="data-table">
+                    <columns>
+                        <TableColumn fx:id="myPostTitleCol" text="Title" prefWidth="300"/>
+                        <TableColumn fx:id="myPostRepliesCol" text="Replies" prefWidth="100"/>
+                        <TableColumn fx:id="myPostDateCol" text="Posted On" prefWidth="150"/>
+                        <TableColumn fx:id="myPostStatusCol" text="Status" prefWidth="100"/>
+                        <TableColumn fx:id="myPostActionsCol" text="Actions" prefWidth="200"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <!-- Create Post View -->
+            <VBox fx:id="createPostPane" spacing="24" styleClass="student-content" visible="false">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Button text="← Back" styleClass="back-button" onAction="#showDashboard"/>
+                    <Text text="Create New Post" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Text>
+                </HBox>
+                
+                <VBox spacing="16" styleClass="create-post-form">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+                    
+                    <VBox spacing="8">
+                        <Text text="Topic Title" styleClass="form-label"/>
+                        <TextField fx:id="postTitleField" promptText="Enter topic title..." 
+                                  styleClass="form-input"/>
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Text text="Description" styleClass="form-label"/>
+                        <TextArea fx:id="postBodyField" promptText="Describe your topic..." 
+                                 styleClass="form-textarea" prefHeight="200"/>
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Text text="Attachments (Optional)" styleClass="form-label"/>
+                        <HBox spacing="12" alignment="CENTER_LEFT">
+                            <Button fx:id="attachFileBtn" text="📎 Attach File" 
+                                   styleClass="secondary-button" onAction="#handleAttachFile"/>
+                            <Text fx:id="attachedFileName" style="-fx-fill: #718096;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <HBox spacing="12" alignment="CENTER_RIGHT">
+                        <padding>
+                            <Insets top="16"/>
+                        </padding>
+                        <Button text="Cancel" styleClass="secondary-button" onAction="#showDashboard"/>
+                        <Button text="Create Post" styleClass="primary-button" onAction="#handleCreatePost"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Notifications View -->
+            <VBox fx:id="notificationsPane" spacing="20" styleClass="student-content" visible="false">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Button text="← Back" styleClass="back-button" onAction="#showDashboard"/>
+                    <Text text="Notifications" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Text>
+                </HBox>
+                
+                <ListView fx:id="notificationsList" styleClass="notifications-list" prefHeight="500"/>
+            </VBox>
+            
+            <!-- Profile View -->
+            <VBox fx:id="profilePane" spacing="20" styleClass="student-content" visible="false">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Button text="← Back" styleClass="back-button" onAction="#showDashboard"/>
+                    <Text text="My Profile" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Text>
+                </HBox>
+                
+                <VBox spacing="16" styleClass="profile-form">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+                    
+                    <HBox spacing="24" alignment="CENTER_LEFT">
+                        <VBox alignment="CENTER" spacing="12">
+                            <Text text="👤" style="-fx-font-size: 80; -fx-fill: #667eea;"/>
+                            <Button text="Change Avatar" styleClass="secondary-button"/>
+                        </VBox>
+                        
+                        <VBox spacing="16" HBox.hgrow="ALWAYS">
+                            <VBox spacing="8">
+                                <Text text="Full Name" styleClass="form-label"/>
+                                <TextField fx:id="profileNameField" styleClass="form-input"/>
+                            </VBox>
+                            
+                            <VBox spacing="8">
+                                <Text text="Student ID" styleClass="form-label"/>
+                                <TextField fx:id="profileStudentIdField" styleClass="form-input" disable="true"/>
+                            </VBox>
+                            
+                            <VBox spacing="8">
+                                <Text text="Email" styleClass="form-label"/>
+                                <TextField fx:id="profileEmailField" styleClass="form-input"/>
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                    
+                    <HBox spacing="12" alignment="CENTER_RIGHT">
+                        <padding>
+                            <Insets top="16"/>
+                        </padding>
+                        <Button text="Cancel" styleClass="secondary-button" onAction="#showDashboard"/>
+                        <Button text="Save Changes" styleClass="primary-button" onAction="#handleSaveProfile"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Settings View -->
+            <VBox fx:id="settingsPane" spacing="20" styleClass="student-content" visible="false">
+                <padding>
+                    <Insets top="32" right="32" bottom="32" left="32"/>
+                </padding>
+                
+                <HBox alignment="CENTER_LEFT" spacing="16">
+                    <Button text="← Back" styleClass="back-button" onAction="#showDashboard"/>
+                    <Text text="Settings" styleClass="page-title">
+                        <font>
+                            <Font name="System Bold" size="28"/>
+                        </font>
+                    </Text>
+                </HBox>
+                
+                <VBox spacing="16" styleClass="settings-form">
+                    <padding>
+                        <Insets top="24" right="24" bottom="24" left="24"/>
+                    </padding>
+                    
+                    <VBox spacing="16">
+                        <Text text="Notifications" styleClass="settings-section-title"/>
+                        <CheckBox text="Email notifications for new replies" selected="true"/>
+                        <CheckBox text="Push notifications" selected="true"/>
+                        <CheckBox text="Weekly digest email" selected="false"/>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <VBox spacing="16">
+                        <Text text="Privacy" styleClass="settings-section-title"/>
+                        <CheckBox text="Show my profile to other students" selected="true"/>
+                        <CheckBox text="Allow others to message me" selected="true"/>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <VBox spacing="16">
+                        <Text text="Account" styleClass="settings-section-title"/>
+                        <Button text="Change Password" styleClass="secondary-button" prefWidth="200"/>
+                        <Button text="Logout" styleClass="danger-button" prefWidth="200" onAction="#handleLogout"/>
+                    </VBox>
+                </VBox>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

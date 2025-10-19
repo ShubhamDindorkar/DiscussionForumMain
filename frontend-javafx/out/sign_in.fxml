@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.forum.dashboard.SignInController" prefWidth="1000" prefHeight="700">
+    <children>
+        <VBox alignment="CENTER" spacing="12" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0">
+            <children>
+                <Label text="Discussion Forum" styleClass="signin-title" />
+
+                <StackPane>
+                    <children>
+                        <VBox spacing="14" alignment="CENTER" styleClass="signin-card">
+                            <children>
+                                <Label text="Sign in" styleClass="signin-header" />
+
+                                <HBox spacing="8" alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="googleButton" text="Google" styleClass="oauth-google" />
+                                        <Button fx:id="emailOption" text="Email" styleClass="oauth-option" />
+                                        <Button fx:id="phoneOption" text="Phone" styleClass="oauth-option" />
+                                        <Button fx:id="userpassOption" text="Username &amp; Password" styleClass="oauth-option" />
+                                    </children>
+                                </HBox>
+
+                                <HBox alignment="CENTER" spacing="8">
+                                    <Separator prefWidth="160" />
+                                    <Label text="or" />
+                                    <Separator prefWidth="160" />
+                                </HBox>
+
+                                <VBox spacing="8" alignment="CENTER" fx:id="credentialsBox">
+                                    <children>
+                                        <TextField fx:id="usernameField" promptText="Email or username" />
+                                        <TextField fx:id="phoneField" promptText="Phone number" visible="false" managed="false" />
+                                        <PasswordField fx:id="passwordField" promptText="Password" />
+                                        <Button fx:id="signInButton" text="Sign In" />
+                                    </children>
+                                </VBox>
+
+                                <Hyperlink fx:id="signupLink" text="Don't have an account? Sign up" />
+
+                                <Label fx:id="hintLabel" text="" styleClass="signin-hint" />
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
