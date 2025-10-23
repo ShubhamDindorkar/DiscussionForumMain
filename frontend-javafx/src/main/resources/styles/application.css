@@ -504,3 +504,797 @@
 .text-center {
     -fx-text-alignment: center;
 }
+
+/* ========================================
+   Login View Styling
+   ======================================== */
+
+.login-view {
+    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-container {
+    -fx-background-color: transparent;
+}
+
+.welcome-text {
+    -fx-font-size: 18px;
+    -fx-text-fill: white;
+    -fx-font-weight: 300;
+}
+
+.login-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 3, 0, 0, 1);
+}
+
+.login-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+    -fx-font-weight: 500;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 3, 0, 0, 1);
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 20, 0, 0, 5);
+}
+
+.section-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.login-field {
+    -fx-background-color: -fx-surface-alt;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+}
+
+.login-field:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+}
+
+.hint-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-style: italic;
+}
+
+.or-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-weight: 600;
+}
+
+.login-button {
+    -fx-padding: 12 25;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+}
+
+.google-button {
+    -fx-background-color: white;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 2;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.google-button:hover {
+    -fx-background-color: #f8f9fa;
+}
+
+/* ========================================
+   Dashboard Styling
+   ======================================== */
+
+.dashboard-view {
+    -fx-background-color: -fx-background;
+}
+
+.dashboard-top-bar {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent -fx-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 2);
+}
+
+.dashboard-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.search-box {
+    -fx-background-color: -fx-surface-alt;
+    -fx-background-radius: 20;
+    -fx-padding: 5 15;
+}
+
+.search-field {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-prompt-text-fill: -fx-text-muted;
+}
+
+.user-name-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.user-role-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.icon-button {
+    -fx-background-color: -fx-surface-alt;
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+}
+
+.icon-button:hover {
+    -fx-background-color: -fx-primary-light;
+}
+
+.profile-menu-button {
+    -fx-background-color: -fx-surface-alt;
+    -fx-background-radius: 50%;
+}
+
+/* ========================================
+   Navigation Pane
+   ======================================== */
+
+.navigation-pane {
+    -fx-background-color: white;
+    -fx-border-color: transparent -fx-border transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-size: 14px;
+    -fx-padding: 12 15;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: -fx-surface-alt;
+}
+
+.nav-button:selected {
+    -fx-background-color: linear-gradient(to right, rgba(74, 144, 226, 0.1), rgba(74, 144, 226, 0.15));
+    -fx-text-fill: -fx-primary;
+    -fx-font-weight: 600;
+}
+
+.plugins-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-weight: 600;
+}
+
+/* ========================================
+   Chat Section
+   ======================================== */
+
+.chat-section {
+    -fx-background-color: -fx-background;
+}
+
+.users-box {
+    -fx-background-color: white;
+    -fx-border-color: transparent -fx-border transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.users-list {
+    -fx-background-color: transparent;
+}
+
+.chat-messages-area {
+    -fx-background-color: -fx-surface;
+}
+
+.message-bubble-sent {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 15 15 5 15;
+    -fx-padding: 10 15;
+}
+
+.message-bubble-sent .label {
+    -fx-text-fill: white;
+}
+
+.message-bubble-received {
+    -fx-background-color: -fx-surface-alt;
+    -fx-background-radius: 15 15 15 5;
+    -fx-padding: 10 15;
+}
+
+.message-sender {
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+}
+
+.message-content {
+    -fx-font-size: 14px;
+}
+
+/* ========================================
+   Calendar Section
+   ======================================== */
+
+.calendar-section {
+    -fx-background-color: -fx-background;
+}
+
+.calendar-box {
+    -fx-background-color: white;
+    -fx-border-color: transparent -fx-border transparent transparent;
+    -fx-border-width: 0 1 0 0;
+}
+
+.calendar-picker {
+    -fx-background-color: white;
+}
+
+.events-list {
+    -fx-background-color: white;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 8;
+}
+
+/* ========================================
+   Settings Section
+   ======================================== */
+
+.settings-section {
+    -fx-background-color: white;
+}
+
+.settings-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.section-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.secondary-button {
+    -fx-background-color: -fx-surface-alt;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 10 20;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: derive(-fx-surface-alt, -10%);
+}
+
+.welcome-message {
+    -fx-font-size: 18px;
+    -fx-text-fill: -fx-text-muted;
+}
+
+
+/* ===== ENHANCED CONTACT LIST ===== */
+.contacts-list {
+    -fx-background-color: transparent;
+}
+
+.contacts-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+
+.contacts-list .list-cell:hover {
+    -fx-background-color: rgba(74, 144, 226, 0.1);
+}
+
+.contacts-list .list-cell:selected {
+    -fx-background-color: rgba(74, 144, 226, 0.2);
+}
+
+.contact-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.contact-message {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7F8C8D;
+    -fx-text-overrun: ellipsis;
+}
+
+.contact-time {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95A5A6;
+}
+
+.unread-badge {
+    -fx-background-color: #E74C3C;
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 10;
+    -fx-alignment: center;
+    -fx-min-width: 20px;
+}
+
+
+/* ===== LIBRARY SECTION ===== */
+.library-section {
+    -fx-background-color: white;
+}
+
+.resources-list {
+    -fx-background-color: transparent;
+}
+
+.resources-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+}
+
+.resource-card {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.resource-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+.resource-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.resource-author {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7F8C8D;
+    -fx-font-style: italic;
+}
+
+.resource-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #34495E;
+}
+
+.category-badge {
+    -fx-background-color: #4A90E2;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-padding: 4 8 4 8;
+    -fx-background-radius: 12;
+}
+
+.icon-button-small {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 2;
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section {
+    -fx-background-color: white;
+}
+
+.projects-grid {
+    -fx-background-color: white;
+}
+
+.project-card {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.project-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 12, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.project-name {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.project-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.project-tech {
+    -fx-font-size: 12px;
+    -fx-text-fill: #34495E;
+    -fx-font-weight: 600;
+}
+
+.status-badge {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12;
+    -fx-text-fill: white;
+}
+
+.status-ongoing {
+    -fx-background-color: #3498DB;
+}
+
+.status-completed {
+    -fx-background-color: #27AE60;
+}
+
+.status-paused {
+    -fx-background-color: #F39C12;
+}
+
+.project-progress {
+    -fx-pref-height: 8;
+}
+
+.project-progress .bar {
+    -fx-background-color: linear-gradient(to right, #4A90E2, #50E3C2);
+    -fx-background-radius: 4;
+}
+
+.project-progress .track {
+    -fx-background-color: #ECF0F1;
+    -fx-background-radius: 4;
+}
+
+.progress-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.progress-percent {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A90E2;
+}
+
+/* ===== ENHANCED UI - ROUNDED CORNERS & POLISH ===== */
+
+/* College Logo Styles */
+.college-logo {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.college-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7F8C8D;
+}
+
+/* Login Page Enhancements */
+.login-logo {
+    -fx-effect: dropshadow(gaussian, rgba(74,144,226,0.4), 15, 0, 0, 3);
+}
+
+.login-card {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 5);
+}
+
+.card-welcome-text {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.card-instruction-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.login-field {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 12;
+}
+
+.login-button {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* Dashboard Top Bar */
+.dashboard-top-bar {
+    -fx-background-radius: 0 0 15 15;
+}
+
+/* Navigation Pane */
+.navigation-pane {
+    -fx-background-radius: 0 15 15 0;
+}
+
+.nav-button {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* Content Areas */
+.content-area {
+    -fx-background-radius: 15;
+}
+
+/* Club Cards */
+.club-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.club-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 12, 0, 0, 4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.club-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.club-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.club-stats {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95A5A6;
+}
+
+/* Topics List */
+.topics-list {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.topics-list .list-cell {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.topic-cell {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 5, 0, 0, 1);
+}
+
+.topic-cell:hover {
+    -fx-background-color: #F8F9FA;
+    -fx-effect: dropshadow(gaussian, rgba(74,144,226,0.3), 8, 0, 0, 2);
+}
+
+.topic-cell-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.topic-cell-author {
+    -fx-font-size: 12px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.topic-cell-stats {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95A5A6;
+}
+
+/* Message Cards */
+.message-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 15;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+}
+
+.message-author {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A90E2;
+}
+
+.message-time {
+    -fx-font-size: 11px;
+    -fx-text-fill: #95A5A6;
+}
+
+.message-content {
+    -fx-font-size: 13px;
+    -fx-text-fill: #34495E;
+    -fx-line-spacing: 2;
+}
+
+/* Buttons */
+.primary-button {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 10 20;
+}
+
+.secondary-button {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 8 16;
+}
+
+.back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4A90E2;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+}
+
+.back-button:hover {
+    -fx-background-color: rgba(74,144,226,0.1);
+}
+
+/* Text Areas and Fields */
+TextField, TextArea, PasswordField {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* Dialogs */
+.dialog-pane {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}
+
+/* Search Fields */
+.search-field {
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+}
+
+/* Chat Section Enhancements */
+.chat-section {
+    -fx-background-radius: 15;
+}
+
+.users-panel {
+    -fx-background-radius: 15 0 0 15;
+}
+
+.message-sent {
+    -fx-background-radius: 15 15 5 15;
+}
+
+.message-received {
+    -fx-background-radius: 15 15 15 5;
+}
+
+/* Calendar Section */
+.calendar-section {
+    -fx-background-radius: 15;
+}
+
+/* Settings Section */
+.settings-section {
+    -fx-background-radius: 15;
+}
+
+/* Welcome Messages */
+.welcome-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.club-discussion-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.topic-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.topic-info {
+    -fx-font-size: 12px;
+    -fx-text-fill: #95A5A6;
+}
+
+/* Scrollbars */
+.scroll-pane {
+    -fx-background-radius: 10;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-radius: 10;
+}
+
+/* ========================================
+   Search Results Dropdown
+   ======================================== */
+
+.search-results-list {
+    -fx-background-color: white;
+    -fx-border-color: #DEE2E6;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 15, 0, 0, 5);
+    -fx-padding: 5;
+}
+
+.search-results-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.search-results-list .list-cell:hover {
+    -fx-background-color: #F8F9FA;
+}
+
+.search-results-list .list-cell:selected {
+    -fx-background-color: #E3F2FD;
+}
+
+/* College Subtitle */
+.college-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6C757D;
+    -fx-font-style: italic;
+}
+
+

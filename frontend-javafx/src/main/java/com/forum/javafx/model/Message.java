@@ -7,6 +7,8 @@ public class Message {
     private String content;
     private Date createTime;
     private long topicId;
+    private String author;
+    private Date timestamp;
 
     public Message() {
     }
@@ -16,6 +18,7 @@ public class Message {
         this.content = content;
         this.createTime = createTime;
         this.topicId = topicId;
+        this.timestamp = createTime;
     }
 
     public long getId() {
@@ -40,6 +43,7 @@ public class Message {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+        this.timestamp = createTime;
     }
 
     public long getTopicId() {
@@ -48,5 +52,14 @@ public class Message {
 
     public void setTopicId(long topicId) {
         this.topicId = topicId;
+    }
+    
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
+    
+    public Date getTimestamp() { return timestamp != null ? timestamp : createTime; }
+    public void setTimestamp(Date timestamp) { 
+        this.timestamp = timestamp;
+        this.createTime = timestamp;
     }
 }
