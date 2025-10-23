@@ -41,6 +41,7 @@ public class DashboardView extends BorderPane {
     private SettingsSection settingsSection;
     private LibrarySection librarySection;
     private ProjectsSection projectsSection;
+    private VBox dashboardHomeSection;
     
     public DashboardView() {
         this.authService = AuthService.getInstance();
@@ -54,6 +55,7 @@ public class DashboardView extends BorderPane {
     private void initialize() {
         getStyleClass().add("dashboard-view");
         
+        dashboardHomeSection = createDashboardHome();
         topicsSection = new TopicsSection();
         chatSection = new ChatSection();
         calendarSection = new CalendarSection();
@@ -79,8 +81,8 @@ public class DashboardView extends BorderPane {
         contentArea.getStyleClass().add("content-area");
         setCenter(contentArea);
         
-        // Show topics by default
-        showSection(topicsSection);
+        // Show dashboard home by default
+        showSection(dashboardHomeSection);
     }
     
     private HBox createTopBar() {
@@ -230,14 +232,16 @@ public class DashboardView extends BorderPane {
         navigationGroup = new ToggleGroup();
         
         // Navigation buttons
+        ToggleButton dashboardBtn = createNavButton("🏠 Dashboard", "dashboard");
         ToggleButton topicsBtn = createNavButton("💬 Topics", "topics");
         ToggleButton chatBtn = createNavButton("📨 Messages", "chat");
         ToggleButton calendarBtn = createNavButton("📅 Calendar", "calendar");
         ToggleButton libraryBtn = createNavButton("📚 Library", "library");
         ToggleButton projectsBtn = createNavButton("💼 Projects", "projects");
         
-        topicsBtn.setSelected(true);
+        dashboardBtn.setSelected(true);
         
+        dashboardBtn.setOnAction(e -> showSection(dashboardHomeSection));
         topicsBtn.setOnAction(e -> showSection(topicsSection));
         chatBtn.setOnAction(e -> showSection(chatSection));
         calendarBtn.setOnAction(e -> showSection(calendarSection));
@@ -257,7 +261,7 @@ public class DashboardView extends BorderPane {
         settingsBtn.setOnAction(e -> showSection(settingsSection));
         
         navPane.getChildren().addAll(
-            topicsBtn, chatBtn, calendarBtn, libraryBtn, projectsBtn, navSpacer, settingsBtn, pluginsLabel
+            dashboardBtn, topicsBtn, chatBtn, calendarBtn, libraryBtn, projectsBtn, navSpacer, settingsBtn, pluginsLabel
         );
         
         return navPane;
@@ -373,6 +377,231 @@ public class DashboardView extends BorderPane {
                 projectsSection.highlightProject(result);
                 break;
         }
+    }
+    
+    private VBox createDashboardHome() {
+        VBox dashboard = new VBox(30);
+        dashboard.setPadding(new Insets(35, 40, 35, 40));
+        dashboard.getStyleClass().add("dashboard-home");
+        
+        // Welcome header
+        Label welcomeLabel = new Label("Welcome Back!");
+        welcomeLabel.setStyle("-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #111827; -fx-padding: 0 0 5 0;");
+        
+        Label subtitleLabel = new Label("Here's what's happening with your forum today");
+        subtitleLabel.setStyle("-fx-font-size: 15px; -fx-text-fill: #6B7280; -fx-padding: 0 0 10 0;");
+        
+        VBox header = new VBox(10);
+        header.getChildren().addAll(welcomeLabel, subtitleLabel);
+        
+        // Statistics cards row with proper spacing
+        HBox statsRow = new HBox(25);
+        statsRow.setAlignment(Pos.TOP_LEFT);
+        HBox.setHgrow(statsRow, Priority.ALWAYS);
+        
+        VBox totalTopicsCard = createStatCard("💬", "Total Topics", "156", "+12 this week", "#6366F1");
+        VBox activeUsersCard = createStatCard("👥", "Active Users", "1,247", "+23% from last month", "#10B981");
+        VBox messagesCard = createStatCard("📨", "Messages", "8,394", "+156 today", "#F59E0B");
+        VBox projectsCard = createStatCard("💼", "Projects", "42", "6 in progress", "#EC4899");
+        
+        HBox.setHgrow(totalTopicsCard, Priority.ALWAYS);
+        HBox.setHgrow(activeUsersCard, Priority.ALWAYS);
+        HBox.setHgrow(messagesCard, Priority.ALWAYS);
+        HBox.setHgrow(projectsCard, Priority.ALWAYS);
+        
+        statsRow.getChildren().addAll(totalTopicsCard, activeUsersCard, messagesCard, projectsCard);
+        
+        // Main content grid with better spacing
+        GridPane contentGrid = new GridPane();
+        contentGrid.setHgap(25);
+        contentGrid.setVgap(25);
+        
+        // Column constraints for proper sizing
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(55);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(45);
+        contentGrid.getColumnConstraints().addAll(col1, col2);
+        
+        // Recent activity card
+        VBox activityCard = createActivityCard();
+        GridPane.setConstraints(activityCard, 0, 0);
+        GridPane.setRowSpan(activityCard, 2);
+        
+        // Quick stats card
+        VBox quickStatsCard = createQuickStatsCard();
+        GridPane.setConstraints(quickStatsCard, 1, 0);
+        
+        // Trending topics card
+        VBox trendingCard = createTrendingTopicsCard();
+        GridPane.setConstraints(trendingCard, 1, 1);
+        
+        contentGrid.getChildren().addAll(activityCard, quickStatsCard, trendingCard);
+        
+        dashboard.getChildren().addAll(header, statsRow, contentGrid);
+        
+        return dashboard;
+    }
+    
+    private VBox createStatCard(String icon, String title, String value, String subtitle, String color) {
+        VBox card = new VBox(15);
+        card.getStyleClass().add("stat-card");
+        card.setPrefWidth(280);
+        card.setMinHeight(150);
+        card.setPadding(new Insets(20, 25, 20, 25));
+        card.setAlignment(Pos.TOP_LEFT);
+        
+        // Icon with better positioning
+        Label iconLabel = new Label(icon);
+        iconLabel.setStyle("-fx-font-size: 40px; -fx-padding: 0 0 8 0;");
+        
+        // Title with better spacing
+        Label titleLabel = new Label(title);
+        titleLabel.setStyle("-fx-font-size: 13px; -fx-text-fill: #6B7280; -fx-font-weight: 600; -fx-letter-spacing: 0.5px; -fx-padding: 0 0 5 0;");
+        
+        // Value with emphasis
+        Label valueLabel = new Label(value);
+        valueLabel.setStyle("-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: " + color + "; -fx-padding: 0 0 8 0;");
+        
+        // Subtitle with subtle color
+        Label subtitleLabel = new Label(subtitle);
+        subtitleLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #9CA3AF; -fx-font-weight: 500;");
+        
+        card.getChildren().addAll(iconLabel, titleLabel, valueLabel, subtitleLabel);
+        
+        return card;
+    }
+    
+    private VBox createActivityCard() {
+        VBox card = new VBox(18);
+        card.getStyleClass().add("card");
+        card.setPrefWidth(450);
+        card.setMinHeight(420);
+        card.setPadding(new Insets(25));
+        
+        Label title = new Label("Recent Activity");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #111827; -fx-padding: 0 0 10 0;");
+        
+        VBox activities = new VBox(14);
+        activities.getChildren().addAll(
+            createActivityItem("Sarah posted in Red Club", "2 minutes ago", "🛡️"),
+            createActivityItem("New project 'AI Chatbot' created", "15 minutes ago", "💼"),
+            createActivityItem("Michael joined Coding Club", "1 hour ago", "💻"),
+            createActivityItem("Discussion on Web Security trending", "2 hours ago", "🔥"),
+            createActivityItem("Library resource added: Clean Code", "3 hours ago", "📚")
+        );
+        
+        card.getChildren().addAll(title, activities);
+        
+        return card;
+    }
+    
+    private HBox createActivityItem(String text, String time, String icon) {
+        HBox item = new HBox(15);
+        item.setAlignment(Pos.CENTER_LEFT);
+        item.setPadding(new Insets(14, 16, 14, 16));
+        item.setStyle("-fx-background-color: #F9FAFB; -fx-background-radius: 12;");
+        
+        Label iconLabel = new Label(icon);
+        iconLabel.setStyle("-fx-font-size: 22px; -fx-padding: 0 5 0 0;");
+        iconLabel.setMinWidth(35);
+        iconLabel.setAlignment(Pos.CENTER);
+        
+        VBox textBox = new VBox(5);
+        Label textLabel = new Label(text);
+        textLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #111827; -fx-font-weight: 600;");
+        Label timeLabel = new Label(time);
+        timeLabel.setStyle("-fx-font-size: 12px; -fx-text-fill: #9CA3AF; -fx-font-weight: 500;");
+        textBox.getChildren().addAll(textLabel, timeLabel);
+        HBox.setHgrow(textBox, Priority.ALWAYS);
+        
+        item.getChildren().addAll(iconLabel, textBox);
+        
+        return item;
+    }
+    
+    private VBox createQuickStatsCard() {
+        VBox card = new VBox(20);
+        card.getStyleClass().add("gradient-card");
+        card.setPrefWidth(380);
+        card.setMinHeight(200);
+        card.setPadding(new Insets(25));
+        
+        Label title = new Label("Quick Stats");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #FFFFFF; -fx-padding: 0 0 12 0;");
+        
+        HBox statsRow1 = new HBox(40);
+        statsRow1.setAlignment(Pos.CENTER_LEFT);
+        statsRow1.getChildren().addAll(
+            createMiniStat("32", "Projects", "#FFFFFF"),
+            createMiniStat("156", "Topics", "#FFFFFF")
+        );
+        
+        HBox statsRow2 = new HBox(40);
+        statsRow2.setAlignment(Pos.CENTER_LEFT);
+        statsRow2.getChildren().addAll(
+            createMiniStat("1.2K", "Users", "#FFFFFF"),
+            createMiniStat("8.4K", "Messages", "#FFFFFF")
+        );
+        
+        card.getChildren().addAll(title, statsRow1, statsRow2);
+        
+        return card;
+    }
+    
+    private VBox createMiniStat(String value, String label, String color) {
+        VBox stat = new VBox(6);
+        stat.setAlignment(Pos.CENTER_LEFT);
+        stat.setMinWidth(120);
+        
+        Label valueLabel = new Label(value);
+        valueLabel.setStyle("-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: " + color + "; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 2, 0, 0, 1);");
+        
+        Label labelText = new Label(label);
+        labelText.setStyle("-fx-font-size: 13px; -fx-text-fill: #E5E7EB; -fx-font-weight: 600; -fx-letter-spacing: 0.3px;");
+        
+        stat.getChildren().addAll(valueLabel, labelText);
+        
+        return stat;
+    }
+    
+    private VBox createTrendingTopicsCard() {
+        VBox card = new VBox(18);
+        card.getStyleClass().add("card");
+        card.setPrefWidth(380);
+        card.setMinHeight(200);
+        card.setPadding(new Insets(25));
+        
+        Label title = new Label("🔥 Trending Topics");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #111827; -fx-padding: 0 0 10 0;");
+        
+        VBox topics = new VBox(12);
+        topics.getChildren().addAll(
+            createTrendingItem("Penetration Testing Basics", "45 replies"),
+            createTrendingItem("React vs Angular 2025", "38 replies"),
+            createTrendingItem("Machine Learning Project Ideas", "32 replies")
+        );
+        
+        card.getChildren().addAll(title, topics);
+        
+        return card;
+    }
+    
+    private HBox createTrendingItem(String topic, String replies) {
+        HBox item = new HBox(12);
+        item.setAlignment(Pos.CENTER_LEFT);
+        item.setPadding(new Insets(10, 0, 10, 0));
+        
+        Label topicLabel = new Label(topic);
+        topicLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #111827; -fx-font-weight: 600;");
+        HBox.setHgrow(topicLabel, Priority.ALWAYS);
+        
+        Label repliesLabel = new Label(replies);
+        repliesLabel.setStyle("-fx-font-size: 11px; -fx-text-fill: #6B7280; -fx-background-color: #F3F4F6; -fx-padding: 6 12; -fx-background-radius: 8; -fx-font-weight: 600;");
+        
+        item.getChildren().addAll(topicLabel, repliesLabel);
+        
+        return item;
     }
     
     public void setOnLogout(Runnable handler) {
