@@ -1,0 +1,506 @@
+/* ========================================
+   Application Styling - Discussion Forum
+   Modern, Professional Design
+   ======================================== */
+
+/* Root Color Palette */
+.root {
+    /* Primary Colors */
+    -fx-primary: #4A90E2;
+    -fx-primary-dark: #357ABD;
+    -fx-primary-light: #6BA3E8;
+    
+    /* Accent Colors */
+    -fx-accent: #50E3C2;
+    -fx-accent-dark: #3BC5A8;
+    
+    /* Neutral Colors */
+    -fx-background: #F8F9FA;
+    -fx-surface: #FFFFFF;
+    -fx-surface-alt: #F1F3F5;
+    -fx-border: #DEE2E6;
+    -fx-border-light: #E9ECEF;
+    
+    /* Text Colors */
+    -fx-text-primary: #212529;
+    -fx-text-secondary: #6C757D;
+    -fx-text-muted: #ADB5BD;
+    
+    /* Status Colors */
+    -fx-success: #51CF66;
+    -fx-error: #FF6B6B;
+    -fx-warning: #FFA94D;
+    
+    /* Shadows */
+    -fx-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    -fx-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    -fx-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    
+    /* Typography */
+    -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 14px;
+}
+
+/* ========================================
+   Main Layout
+   ======================================== */
+
+.main-view {
+    -fx-background-color: -fx-background;
+}
+
+.main-split-pane {
+    -fx-background-color: -fx-background;
+}
+
+.main-split-pane > .split-pane-divider {
+    -fx-background-color: -fx-border;
+    -fx-padding: 0 1 0 1;
+}
+
+.content-area {
+    -fx-background-color: -fx-surface;
+}
+
+/* ========================================
+   Header Styling
+   ======================================== */
+
+.header-view {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: transparent transparent -fx-border-light transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.app-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 5 0 5 0;
+}
+
+.header-separator {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -fx-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8 0 0 0;
+}
+
+.header-button {
+    -fx-background-color: -fx-surface-alt;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
+}
+
+.header-button:hover {
+    -fx-background-color: derive(-fx-surface-alt, -5%);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 6, 0, 0, 3);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.header-button:pressed {
+    -fx-background-color: derive(-fx-surface-alt, -10%);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 3, 0, 0, 1);
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.98;
+}
+
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary, -fx-primary-dark);
+    -fx-text-fill: white;
+    -fx-border-color: -fx-primary-dark;
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary-light, -fx-primary);
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.4), 8, 0, 0, 4);
+}
+
+.primary-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary-dark, derive(-fx-primary-dark, -10%));
+}
+
+/* ========================================
+   Topics List View
+   ======================================== */
+
+.topic-list-view {
+    -fx-background-color: -fx-surface;
+}
+
+.topics-container {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 0 1 0 0;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 5 0 10 0;
+}
+
+.topics-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.topics-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.topics-scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.topics-scroll-pane > .scroll-bar:vertical > .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 5;
+}
+
+.topics-scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: -fx-border;
+    -fx-background-radius: 5;
+}
+
+.topics-scroll-pane > .scroll-bar:vertical > .thumb:hover {
+    -fx-background-color: derive(-fx-border, -10%);
+}
+
+.topics-list {
+    -fx-background-color: transparent;
+}
+
+/* Topic Cards */
+.topic-card {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.04), 3, 0, 0, 1);
+}
+
+.topic-card-hover {
+    -fx-background-color: -fx-surface-alt;
+    -fx-border-color: -fx-primary-light;
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.2), 6, 0, 0, 2);
+}
+
+.topic-card-selected {
+    -fx-background-color: linear-gradient(to right, rgba(74, 144, 226, 0.08), rgba(74, 144, 226, 0.12));
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.3), 8, 0, 0, 2);
+}
+
+.topic-card-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.topic-card-count {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.empty-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-muted;
+    -fx-padding: 40 20 40 20;
+    -fx-text-alignment: center;
+}
+
+.status-label {
+    -fx-font-size: 13px;
+    -fx-padding: 8 12 8 12;
+    -fx-background-color: -fx-surface-alt;
+    -fx-background-radius: 6;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.error-label {
+    -fx-background-color: rgba(255, 107, 107, 0.1);
+    -fx-text-fill: -fx-error;
+}
+
+.loading-indicator {
+    -fx-progress-color: -fx-primary;
+}
+
+/* ========================================
+   Messages View
+   ======================================== */
+
+.messages-view {
+    -fx-background-color: -fx-surface;
+}
+
+.messages-top-bar {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: transparent transparent -fx-border-light transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.03), 3, 0, 0, 1);
+}
+
+.back-button {
+    -fx-font-size: 14px;
+}
+
+.topic-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-secondary;
+    -fx-font-weight: 500;
+}
+
+.topic-title-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.messages-scroll-pane {
+    -fx-background-color: -fx-background;
+    -fx-background: -fx-background;
+}
+
+.messages-scroll-pane > .viewport {
+    -fx-background-color: -fx-background;
+}
+
+.messages-scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.messages-scroll-pane > .scroll-bar:vertical > .track {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+}
+
+.messages-scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: -fx-border;
+    -fx-background-radius: 5;
+}
+
+.messages-container {
+    -fx-background-color: -fx-background;
+}
+
+/* Message Cards */
+.message-card {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border-light;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 4, 0, 0, 2);
+}
+
+.message-content {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-primary;
+    -fx-line-spacing: 2;
+}
+
+.message-separator {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -fx-border-light transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.message-timestamp {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-style: italic;
+}
+
+.empty-messages-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-text-muted;
+    -fx-padding: 60 20 60 20;
+    -fx-text-alignment: center;
+}
+
+/* Message Input Area */
+.message-input-area {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border-light transparent transparent transparent;
+    -fx-border-width: 2 0 0 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, -2);
+}
+
+.input-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.message-input {
+    -fx-background-color: -fx-surface-alt;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-text-primary;
+    -fx-font-family: -fx-font-family;
+}
+
+.message-input:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-background-color: -fx-surface;
+    -fx-effect: dropshadow(gaussian, rgba(74, 144, 226, 0.2), 6, 0, 0, 0);
+}
+
+.send-button {
+    -fx-padding: 12 30 12 30;
+    -fx-font-size: 14px;
+}
+
+/* ========================================
+   Welcome View
+   ======================================== */
+
+.welcome-view {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 40;
+}
+
+.welcome-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 18px;
+    -fx-text-fill: -fx-text-secondary;
+}
+
+.welcome-instruction {
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-text-muted;
+    -fx-font-style: italic;
+}
+
+/* ========================================
+   Dialog Styling
+   ======================================== */
+
+.dialog-pane {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 20;
+}
+
+.dialog-pane > .header-panel {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 10 20 10 20;
+}
+
+.dialog-pane > .header-panel > .label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-text-primary;
+}
+
+.dialog-pane > .content {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 20;
+}
+
+.dialog-pane > .button-bar > .container {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 10 20 10 20;
+}
+
+.dialog-pane .button {
+    -fx-background-color: -fx-surface-alt;
+    -fx-text-fill: -fx-text-primary;
+    -fx-padding: 10 20 10 20;
+    -fx-background-radius: 6;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: derive(-fx-surface-alt, -5%);
+}
+
+.dialog-pane .button:default {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary, -fx-primary-dark);
+    -fx-text-fill: white;
+    -fx-border-color: -fx-primary-dark;
+}
+
+.dialog-pane .button:default:hover {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary-light, -fx-primary);
+}
+
+.topic-title-field {
+    -fx-background-color: -fx-surface-alt;
+    -fx-border-color: -fx-border;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+}
+
+.topic-title-field:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+    -fx-background-color: -fx-surface;
+}
+
+/* ========================================
+   Scrollbar Styling (Global)
+   ======================================== */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: transparent;
+}
+
+/* ========================================
+   Animations and Transitions
+   ======================================== */
+
+.animated {
+    -fx-transition: all 0.3s ease;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+.text-bold {
+    -fx-font-weight: bold;
+}
+
+.text-muted {
+    -fx-text-fill: -fx-text-muted;
+}
+
+.text-center {
+    -fx-text-alignment: center;
+}
