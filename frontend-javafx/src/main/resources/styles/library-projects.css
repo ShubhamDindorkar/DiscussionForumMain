@@ -1,0 +1,144 @@
+
+/* ===== LIBRARY SECTION ===== */
+.library-section {
+    -fx-background-color: white;
+}
+
+.resources-list {
+    -fx-background-color: transparent;
+}
+
+.resources-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 5;
+}
+
+.resource-card {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 0, 2);
+}
+
+.resource-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3);
+}
+
+.resource-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.resource-author {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7F8C8D;
+    -fx-font-style: italic;
+}
+
+.resource-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #34495E;
+}
+
+.category-badge {
+    -fx-background-color: #4A90E2;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-padding: 4 8 4 8;
+    -fx-background-radius: 12;
+}
+
+.icon-button-small {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-cursor: hand;
+    -fx-padding: 2;
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects-section {
+    -fx-background-color: white;
+}
+
+.projects-grid {
+    -fx-background-color: white;
+}
+
+.project-card {
+    -fx-background-color: white;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.project-card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 12, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.project-name {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.project-description {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.project-tech {
+    -fx-font-size: 12px;
+    -fx-text-fill: #34495E;
+    -fx-font-weight: 600;
+}
+
+.status-badge {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12;
+    -fx-text-fill: white;
+}
+
+.status-ongoing {
+    -fx-background-color: #3498DB;
+}
+
+.status-completed {
+    -fx-background-color: #27AE60;
+}
+
+.status-paused {
+    -fx-background-color: #F39C12;
+}
+
+.project-progress {
+    -fx-pref-height: 8;
+}
+
+.project-progress .bar {
+    -fx-background-color: linear-gradient(to right, #4A90E2, #50E3C2);
+    -fx-background-radius: 4;
+}
+
+.project-progress .track {
+    -fx-background-color: #ECF0F1;
+    -fx-background-radius: 4;
+}
+
+.progress-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #7F8C8D;
+}
+
+.progress-percent {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4A90E2;
+}

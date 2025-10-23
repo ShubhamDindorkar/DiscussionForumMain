@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'com.forum'
+version = '1.0.0'
+sourceCompatibility = '21'
+targetCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "21"
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web']
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'org.controlsfx:controlsfx:11.1.2'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-fontawesome5-pack:12.3.1'
+    implementation 'org.kordamp.ikonli:ikonli-material-pack:12.3.1'
+    implementation 'org.slf4j:slf4j-api:2.0.9'
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
+}
+
+application {
+    mainClass = 'com.forum.javafx.ForumApplication'
+}
+
+tasks.named('run') {
+    systemProperty 'prism.lcdtext', 'false'
+    systemProperty 'prism.text', 't2k'
+}
