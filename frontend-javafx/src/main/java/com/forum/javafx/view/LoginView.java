@@ -8,6 +8,12 @@ import javafx.scene.layout.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.paint.Color;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import java.io.File;
 import com.forum.javafx.service.AuthService;
 
 public class LoginView extends StackPane {
@@ -32,6 +38,27 @@ public class LoginView extends StackPane {
     }
     
     private void setupLayout() {
+        // Background image layer with blur and overlay
+        ImageView bgView = new ImageView();
+        try {
+            File bgFile = new File("C:\\Users\\Hp\\Downloads\\images.jfif");
+            if (bgFile.exists()) {
+                Image bgImg = new Image(bgFile.toURI().toString(), true);
+                bgView.setImage(bgImg);
+            }
+        } catch (Exception ignore) {}
+        bgView.setPreserveRatio(true);
+        bgView.setSmooth(true);
+        bgView.setCache(true);
+        bgView.fitWidthProperty().bind(widthProperty());
+        bgView.fitHeightProperty().bind(heightProperty());
+        bgView.setEffect(new GaussianBlur(18));
+
+        Region overlay = new Region();
+        overlay.setStyle("-fx-background-color: rgba(0,0,0,0.35);");
+        overlay.prefWidthProperty().bind(widthProperty());
+        overlay.prefHeightProperty().bind(heightProperty());
+
         // Main container
         VBox mainContainer = new VBox(40);
         mainContainer.setAlignment(Pos.CENTER);
@@ -74,9 +101,10 @@ public class LoginView extends StackPane {
         headerBox.getChildren().addAll(forumLabel, collegeNameLabel);
         
         // Login form card
-        VBox loginCard = new VBox(25);
+    VBox loginCard = new VBox(25);
         loginCard.getStyleClass().add("login-card");
         loginCard.setPadding(new Insets(45, 45, 45, 45));
+    enableHoverLift(loginCard);
         
         // Welcome message inside card
         Label welcomeLabel = new Label("Welcome to Discussion Forum");
@@ -104,9 +132,10 @@ public class LoginView extends StackPane {
         Label hintLabel = new Label("Use: admin / admin");
         hintLabel.getStyleClass().add("hint-label");
         
-        loginButton = new Button("Login");
+    loginButton = new Button("Login");
         loginButton.getStyleClass().addAll("login-button", "primary-button");
         loginButton.setMaxWidth(Double.MAX_VALUE);
+    enableHoverLift(loginButton);
         
         VBox loginSection = new VBox(12);
         loginSection.getChildren().addAll(loginLabel, usernameField, passwordField, hintLabel, loginButton);
@@ -130,20 +159,36 @@ public class LoginView extends StackPane {
         googleEmailField.setPromptText("College Email (e.g., student@college.edu)");
         googleEmailField.getStyleClass().add("login-field");
         
-        googleLoginButton = new Button("🔐 Sign in with Google");
+    googleLoginButton = new Button("🔐 Sign in with Google");
         googleLoginButton.getStyleClass().addAll("login-button", "google-button");
         googleLoginButton.setMaxWidth(Double.MAX_VALUE);
+    enableHoverLift(googleLoginButton);
         
         VBox googleSection = new VBox(12);
         googleSection.getChildren().addAll(googleLabel, googleEmailField, googleLoginButton);
         
         loginCard.getChildren().addAll(welcomeBox, loginSection, separatorBox, googleSection);
         
-        mainContainer.getChildren().addAll(headerBox, loginCard);
-        
-        getChildren().add(mainContainer);
+    mainContainer.getChildren().addAll(headerBox, loginCard);
+
+    getChildren().addAll(bgView, overlay, mainContainer);
         
         setupEventHandlers();
+    }
+
+    private void enableHoverLift(Node node) {
+        node.setOnMouseEntered(e -> {
+            node.setScaleX(1.02);
+            node.setScaleY(1.02);
+            node.setEffect(new DropShadow(15, Color.color(0,0,0,0.2)));
+            node.setCursor(Cursor.HAND);
+        });
+        node.setOnMouseExited(e -> {
+            node.setScaleX(1.0);
+            node.setScaleY(1.0);
+            node.setEffect(null);
+            node.setCursor(Cursor.DEFAULT);
+        });
     }
     
     private void setupEventHandlers() {
