@@ -6,53 +6,52 @@
 /* Modern Color Palette - Premium Design */
 .root {
     /* Primary Colors - Deep & Professional */
-    -fx-primary: #6366F1;
-    -fx-primary-dark: #4F46E5;
-    -fx-primary-light: #818CF8;
-    -fx-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Black & White palette */
+    -fx-primary: #000000;
+    -fx-primary-dark: #000000;
+    -fx-primary-light: #222222;
+    /* Note: JavaFX looked-up colors must be Colors, not gradients */
     
     /* Accent Colors - Vibrant & Modern */
-    -fx-accent: #10B981;
-    -fx-accent-dark: #059669;
-    -fx-accent-orange: #F59E0B;
-    -fx-accent-pink: #EC4899;
-    -fx-accent-blue: #3B82F6;
+    -fx-accent: #000000;
+    -fx-accent-dark: #000000;
+    -fx-accent-orange: #000000;
+    -fx-accent-pink: #000000;
+    -fx-accent-blue: #000000;
     
     /* Background Colors - Sophisticated */
-    -fx-background: #F9FAFB;
-    -fx-background-dark: #111827;
+    -fx-background: #FFFFFF;
+    -fx-background-dark: #000000;
     -fx-surface: #FFFFFF;
-    -fx-surface-dark: #1F2937;
-    -fx-surface-alt: #F3F4F6;
-    -fx-surface-hover: #F9FAFB;
+    -fx-surface-dark: #111111;
+    -fx-surface-alt: #F5F5F5;
+    -fx-surface-hover: #F7F7F7;
     
     /* Card Colors */
     -fx-card-bg: #FFFFFF;
-    -fx-card-dark: #1F2937;
+    -fx-card-dark: #111111;
     -fx-card-border: #E5E7EB;
     
     /* Border Colors */
     -fx-border: #E5E7EB;
     -fx-border-light: #F3F4F6;
-    -fx-border-dark: #374151;
+    -fx-border-dark: #222222;
     
     /* Text Colors - High Contrast */
-    -fx-text-primary: #111827;
-    -fx-text-secondary: #6B7280;
-    -fx-text-tertiary: #9CA3AF;
+    -fx-text-primary: #000000;
+    -fx-text-secondary: #444444; /* grayscale */
+    -fx-text-muted: #666666; /* grayscale muted */
+    -fx-text-tertiary: #777777;
     -fx-text-white: #FFFFFF;
     
     /* Status Colors - Clear & Distinct */
-    -fx-success: #10B981;
-    -fx-error: #EF4444;
-    -fx-warning: #F59E0B;
-    -fx-info: #3B82F6;
+    /* Monochrome only */
+    -fx-success: #000000;
+    -fx-error: #000000;
+    -fx-warning: #000000;
+    -fx-info: #000000;
     
-    /* Shadows - Depth & Elevation */
-    -fx-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    -fx-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    -fx-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    -fx-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    /* Shadows note: use -fx-effect: dropshadow(...) on components directly */
     
     /* Typography - Modern & Clean */
     -fx-font-family: "Inter", "SF Pro Display", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
@@ -532,7 +531,7 @@
    ======================================== */
 
 .login-view {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -fx-background-color: #000000;
 }
 
 .login-container {
@@ -701,8 +700,8 @@
 }
 
 .nav-button:selected {
-    -fx-background-color: linear-gradient(to right, rgba(74, 144, 226, 0.1), rgba(74, 144, 226, 0.15));
-    -fx-text-fill: -fx-primary;
+    -fx-background-color: rgba(0,0,0,0.08);
+    -fx-text-fill: #000000;
     -fx-font-weight: 600;
 }
 
@@ -833,17 +832,17 @@
 }
 
 .contacts-list .list-cell:hover {
-    -fx-background-color: rgba(74, 144, 226, 0.1);
+    -fx-background-color: rgba(0,0,0,0.06);
 }
 
 .contacts-list .list-cell:selected {
-    -fx-background-color: rgba(74, 144, 226, 0.2);
+    -fx-background-color: rgba(0,0,0,0.10);
 }
 
 .contact-name {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2C3E50;
+    -fx-text-fill: #111111;
 }
 
 .contact-message {
@@ -913,7 +912,7 @@
 }
 
 .category-badge {
-    -fx-background-color: #4A90E2;
+    -fx-background-color: #000000;
     -fx-text-fill: white;
     -fx-font-size: 11px;
     -fx-padding: 4 8 4 8;
@@ -977,15 +976,15 @@
 }
 
 .status-ongoing {
-    -fx-background-color: #3498DB;
+    -fx-background-color: #000000;
 }
 
 .status-completed {
-    -fx-background-color: #27AE60;
+    -fx-background-color: #333333;
 }
 
 .status-paused {
-    -fx-background-color: #F39C12;
+    -fx-background-color: #666666;
 }
 
 .project-progress {
@@ -993,7 +992,7 @@
 }
 
 .project-progress .bar {
-    -fx-background-color: linear-gradient(to right, #4A90E2, #50E3C2);
+    -fx-background-color: #000000;
     -fx-background-radius: 4;
 }
 
@@ -1129,7 +1128,7 @@
 
 .topic-cell:hover {
     -fx-background-color: #F8F9FA;
-    -fx-effect: dropshadow(gaussian, rgba(74,144,226,0.3), 8, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);
 }
 
 .topic-cell-title {
@@ -1161,7 +1160,7 @@
 .message-author {
     -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-text-fill: #4A90E2;
+    -fx-text-fill: #000000;
 }
 
 .message-time {
@@ -1190,7 +1189,7 @@
 
 .back-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #4A90E2;
+    -fx-text-fill: #000000;
     -fx-font-weight: bold;
     -fx-cursor: hand;
     -fx-background-radius: 6;
@@ -1198,7 +1197,7 @@
 }
 
 .back-button:hover {
-    -fx-background-color: rgba(74,144,226,0.1);
+    -fx-background-color: rgba(0,0,0,0.08);
 }
 
 /* Text Areas and Fields */
@@ -1290,22 +1289,21 @@ TextField, TextArea, PasswordField {
 
 /* Modern Buttons - Elevated & Interactive */
 .button {
-    -fx-background-color: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    -fx-background-color: #000000;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: 600;
     -fx-padding: 12 24;
     -fx-background-radius: 12;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.3), 10, 0, 0, 4);
-    -fx-transition: all 0.3s ease;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
+    -fx-background-color: #111111;
     -fx-scale-x: 1.02;
     -fx-scale-y: 1.02;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.4), 15, 0, 0, 6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.35), 15, 0, 0, 6);
 }
 
 .button:pressed {
@@ -1314,43 +1312,41 @@ TextField, TextArea, PasswordField {
 }
 
 .primary-button {
-    -fx-background-color: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+    -fx-background-color: #000000;
     -fx-text-fill: white;
     -fx-font-weight: 600;
     -fx-padding: 12 28;
     -fx-background-radius: 12;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.35), 12, 0, 0, 4);
 }
 
 .primary-button:hover {
-    -fx-background-color: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.5), 16, 0, 0, 6);
+    -fx-background-color: #111111;
 }
 
 .secondary-button {
-    -fx-background-color: #F3F4F6;
-    -fx-text-fill: #374151;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #000000;
     -fx-font-weight: 600;
     -fx-padding: 10 20;
     -fx-background-radius: 10;
-    -fx-border-color: #E5E7EB;
+    -fx-border-color: #DDDDDD;
     -fx-border-width: 1;
     -fx-border-radius: 10;
 }
 
 .secondary-button:hover {
-    -fx-background-color: #E5E7EB;
-    -fx-border-color: #D1D5DB;
+    -fx-background-color: #F5F5F5;
+    -fx-border-color: #CCCCCC;
 }
 
 .danger-button {
-    -fx-background-color: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    -fx-background-color: #000000;
     -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(239, 68, 68, 0.3), 10, 0, 0, 4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4);
 }
 
 .danger-button:hover {
-    -fx-background-color: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    -fx-background-color: #111111;
 }
 
 .icon-button-small {
@@ -1369,10 +1365,10 @@ TextField, TextArea, PasswordField {
 }
 
 .icon-button-small:hover {
-    -fx-background-color: #6366F1;
+    -fx-background-color: #000000;
     -fx-text-fill: white;
-    -fx-border-color: #6366F1;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.2), 8, 0, 0, 2);
+    -fx-border-color: #000000;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);
 }
 
 /* Modern Cards - Premium Look */
@@ -1391,13 +1387,7 @@ TextField, TextArea, PasswordField {
     -fx-translate-y: -2;
 }
 
-.dark-card {
-    -fx-background-color: linear-gradient(135deg, #1F2937 0%, #111827 100%);
-    -fx-text-fill: white;
-    -fx-background-radius: 16;
-    -fx-padding: 24;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0, 0, 8);
-}
+.dark-card { -fx-background-color: #000000; -fx-text-fill: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 8); }
 
 .stat-card {
     -fx-background-color: white;
@@ -1409,11 +1399,18 @@ TextField, TextArea, PasswordField {
     -fx-border-radius: 16;
 }
 
-.gradient-card {
-    -fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -fx-background-radius: 20;
-    -fx-padding: 28;
-    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 25, 0, 0, 10);
+.gradient-card { -fx-background-color: #000000; -fx-background-radius: 20; -fx-padding: 28; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 25, 0, 0, 10); }
+
+/* Ensure Google login button remains readable despite global .button styles */
+.login-view .google-button {
+    -fx-background-color: white;
+    -fx-text-fill: #111827;
+    -fx-border-color: #E5E7EB;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);
+}
+.login-view .google-button:hover {
+    -fx-background-color: #F8F9FA;
 }
 
 /* Modern Progress Bars */
@@ -1427,11 +1424,7 @@ TextField, TextArea, PasswordField {
     -fx-background-radius: 10;
 }
 
-.progress-bar > .bar {
-    -fx-background-color: linear-gradient(90deg, #6366F1 0%, #8B5CF6 100%);
-    -fx-background-radius: 10;
-    -fx-padding: 4;
-}
+.progress-bar > .bar { -fx-background-color: #000000; -fx-background-radius: 10; -fx-padding: 4; }
 
 /* Modern Text Fields */
 .text-field, .text-area {
@@ -1446,9 +1439,9 @@ TextField, TextArea, PasswordField {
 }
 
 .text-field:focused, .text-area:focused {
-    -fx-border-color: #6366F1;
+    -fx-border-color: #000000;
     -fx-background-color: white;
-    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.15), 10, 0, 0, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 2);
 }
 
 /* Modern ComboBox */
@@ -1462,7 +1455,7 @@ TextField, TextArea, PasswordField {
 }
 
 .combo-box:hover {
-    -fx-border-color: #6366F1;
+    -fx-border-color: #000000;
 }
 
 /* Modern ListView */
@@ -1484,10 +1477,7 @@ TextField, TextArea, PasswordField {
     -fx-background-color: #F9FAFB;
 }
 
-.list-cell:filled:selected {
-    -fx-background-color: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    -fx-text-fill: #6366F1;
-}
+.list-cell:filled:selected { -fx-background-color: rgba(0,0,0,0.08); -fx-text-fill: #000000; }
 
 /* Badge Styles */
 .badge {
@@ -1497,25 +1487,7 @@ TextField, TextArea, PasswordField {
     -fx-font-weight: 600;
 }
 
-.badge-success {
-    -fx-background-color: rgba(16, 185, 129, 0.1);
-    -fx-text-fill: #059669;
-}
-
-.badge-warning {
-    -fx-background-color: rgba(245, 158, 11, 0.1);
-    -fx-text-fill: #D97706;
-}
-
-.badge-error {
-    -fx-background-color: rgba(239, 68, 68, 0.1);
-    -fx-text-fill: #DC2626;
-}
-
-.badge-info {
-    -fx-background-color: rgba(59, 130, 246, 0.1);
-    -fx-text-fill: #2563EB;
-}
+.badge-success, .badge-warning, .badge-error, .badge-info { -fx-background-color: #F1F1F1; -fx-text-fill: #000000; }
 
 
 /* ========================================
@@ -1543,7 +1515,7 @@ TextField, TextArea, PasswordField {
 }
 
 .search-results-list .list-cell:selected {
-    -fx-background-color: #E3F2FD;
+    -fx-background-color: rgba(0,0,0,0.08);
 }
 
 /* College Subtitle */
